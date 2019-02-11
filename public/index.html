@@ -6,8 +6,19 @@
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+  <h1>JS-Vision</h1>
+  <div class="vision container">
+    <div class="vision-video">
+      <video id="player" controls autoplay></video>
+      <canvas id="snapshot"></canvas>
+    </div>
+    <div class="vision-panel">
+      <button id="enable">Face Recognize</button>
+      <button id="disable">Cancel</button>
+      <button id="capture">Capture</button>
+      <button id="clear">Clear</button>
+    </div>
+  </div>
 </body>
-
+<script src="./javascripts/vision.js"></script>
 </html>
