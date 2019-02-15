@@ -58,25 +58,10 @@ disableRecognition.addEventListener('click', () => {
 
 sendImage.addEventListener('click', () => {
   const dataURL = snapshotCanvas.toDataURL('image/png');
-  const imgData = dataURL.replace(/^data:image\/(png|jpg);base64,/, '');
-  // (async () => {
-  //   const rawResponse = await fetch('http://localhost:3000/upload-image', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type' : 'multipart/form-data'
-  //       // 'Content-Type': 'application/octet-stream'
-  //     },
-  //     body: {"data": dataURL}
-  //   });
-  //   const content = await rawResponse.json();
-  
-  //   console.log(content);
-  // })();
   $.ajax({
     url: 'http://localhost:3000/upload-image',
     dataType: 'json',
-    // data: {"data": imgData},
-    data: dataURL,
+    data: { data: dataURL},
     type: 'POST',
     success: function(data) {
       console.log(data);
@@ -84,14 +69,4 @@ sendImage.addEventListener('click', () => {
     });
 });
 
-// function getBase64Image(imgElem) {
-//   // imgElem must be on the same server otherwise a cross-origin error will be thrown "SECURITY_ERR: DOM Exception 18"
-//   const canvas = document.createElement('canvas');
-//   canvas.width = imgElem.clientWidth;
-//   canvas.height = imgElem.clientHeight;
-//   const ctx = canvas.getContext('2d');
-//   ctx.drawImage(imgElem, 0, 0);
-//   const dataURL = canvas.toDataURL('image/png');
-//   return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-//   }
 
