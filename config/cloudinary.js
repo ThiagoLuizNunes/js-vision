@@ -19,4 +19,4 @@ cloudinary.config(
 //   );
 //   const parser = multer({ storage: storage });
 
-  module.exports = { cloudinary };
+module.exports = { cloudinary };

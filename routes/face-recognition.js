@@ -11,16 +11,17 @@ cloudinary.config(
     api_secret: process.env.API_SECRET
   }
 );
+
 /* GET users listing. */
 router.post('/', (req, res) => {
-  console.log(req.file) // to see what is returned to you
   const pathImage = path.join(__dirname, 'public/images/perfil.jpg');
   console.log(pathImage);
   let result;
 
-  cloudinary.v2.uploader.upload(pathImage, (error, result) => {
-    console.log(result, error);
-    res = result;
+  cloudinary.uploader.upload(pathImage, function(err,image){
+    console.log("** Eager Transformations");
+    if (err){ console.warn(err);}
+    waitForAllUploads("lake",err,image);
   });
 
   res.send('result');
