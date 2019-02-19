@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
   fs.writeFile('uploads/test.png', base64, {encoding: 'base64'}, (err)  => {
     console.log('Error', err);
   });
-  res.json(req.body.data);
+  res.json('Image uploaded with success!');
 });
 
 module.exports = router;
