@@ -1,30 +1,29 @@
 const express = require('express');
 const path = require('path');
-// const cloudinary = require('../config/cloudinary');
-const cloudinary = require("cloudinary");
+const fs = require('fs');
+const fr = require('face-recognition');
 const router = express.Router();
 
-cloudinary.config(
-  {
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
-  }
-);
-
 /* GET users listing. */
-router.post('/', (req, res) => {
-  const pathImage = path.join(__dirname, 'public/images/perfil.jpg');
-  console.log(pathImage);
-  let result;
+router.get('/', (req, res) => {
+  const dataPath = path.join(__dirname, '../uploads/faces');
+  const classNames = ['thiago'];
 
-  cloudinary.uploader.upload(pathImage, function(err,image){
-    console.log("** Eager Transformations");
-    if (err){ console.warn(err);}
-    waitForAllUploads("lake",err,image);
-  });
-
-  res.send('result');
+  const allFiles = fs.readdirSync(dataPath);
+  const imagesByClass = classNames.map(c =>
+    allFiles
+      .filter(f => f.includes(c))
+      .map(f => path.join(dataPath, f))
+      .map(fp => fr.loadImage(fp))
+  );
+  console.log(imagesByClass)
+  const numTrainingFaces = 10;
+  const trainDataByClass = imagesByClass.map(imgs => imgs.slice(0, numTrainingFaces));
+  const testDataByClass = imagesByClass.map(imgs => imgs.slice(numTrainingFaces));
+  
+  res.send(imagesByClass);
 });
 
 module.exports = router;
+
+

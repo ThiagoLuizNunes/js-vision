@@ -61,7 +61,7 @@ sendImage.addEventListener('click', () => {
   $.ajax({
     url: 'http://localhost:3000/upload-image',
     dataType: 'json',
-    data: { data: dataURL},
+    data: { id: Math.floor(Math.random() * 20), data: dataURL},
     type: 'POST',
     success: function(data) {
       console.log(data);
