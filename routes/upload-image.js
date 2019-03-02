@@ -14,30 +14,31 @@ router.post('/', (req, res) => {
   
   const targetSize = 150;
   const image = fr.loadImage(`./uploads/images/${userName}${id}.jpg`);
-  let faceImage;
   detector.detectFaces(image, targetSize)
     .then((response) => {
-      faceImage = response[0];
       fr.saveImage(`./uploads/faces/face_${userName}${id}.jpg`, response[0]);
+      Promise.all([
+        recognizer.addFaces(response, `${userName}`)
+      ])
+        .then(() => {
+          const modelState = recognizer.serialize();
+          fs.readFile(`./models/${userName}.model.json`, 'UTF-8', (err, data) => {  
+            if (err) {
+              fs.writeFileSync(`./models/${userName}.model.json`, JSON.stringify(modelState,  null, 2));
+            } else {
+              console.log(data.length);
+              // data.faceDescriptors.push(modelState.faceDescriptors[0]);
+              // fs.writeFileSync(`./models/${userName}.model.json`, JSON.stringify(data, null, 2));
+            }
+          });
+        })
+        .catch((error) => {
+          
+        })
     })
     .catch((error) => {
     });
 
-  // Promise.all([
-  //   recognizer.addFaces(faceImage, `${userName}`)
-  // ])
-  //   .then(() => {
-  //     const modelState = recognizer.serialize();
-  //     // const userdb = JSON.parse(fs.readFileSync(`./models/${userName}.model.json`, 'UTF-8'));
-  //     // if (!userdb) {
-  //       fs.writeFileSync(`./models/${userName}.model.json`, JSON.stringify(modelState));
-  //     // } else {
-  //     //   userdb.concat(modelState);
-  //     // }
-  //   })
-  //   .catch((error) => {
-      
-  //   })
   res.json('Image uploaded with success!');
 });
 
