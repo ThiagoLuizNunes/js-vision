@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 const fr = require('face-recognition')
 const detector = fr.FaceDetector();
 const targetSize = 150;
