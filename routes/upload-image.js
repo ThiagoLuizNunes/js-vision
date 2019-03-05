@@ -26,9 +26,9 @@ router.post('/', (req, res) => {
             if (err) {
               fs.writeFileSync(`./models/${userName}.model.json`, JSON.stringify(modelState,  null, 2));
             } else {
-              console.log(data.length);
-              // data.faceDescriptors.push(modelState.faceDescriptors[0]);
-              // fs.writeFileSync(`./models/${userName}.model.json`, JSON.stringify(data, null, 2));
+              data = JSON.parse(data);
+              data[0].faceDescriptors.push(modelState[0].faceDescriptors[0]);
+              fs.writeFileSync(`./models/${userName}.model.json`, JSON.stringify(data, null, 2));
             }
           });
         })
