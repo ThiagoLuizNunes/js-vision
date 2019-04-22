@@ -63,8 +63,8 @@ sendImage.addEventListener('click', () => {
     dataType: 'json',
     data: { id: Math.floor(Math.random() * 20), data: dataURL, name: 'Thiago'},
     type: 'POST',
-    success: function(data) {
+    success: (data) => {
       console.log(data);
-      }
-    });
+    }
+  });
 });
