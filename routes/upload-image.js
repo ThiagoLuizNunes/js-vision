@@ -18,17 +18,31 @@ router.post('/', async (req, res) => {
   const image = await fr.loadImage(`./uploads/images/${userName}${id}.jpg`);
   const faceImages = await detector.detectFaces(image, targetSize);
 
-  await faceImages.forEach((img, i) => fr.saveImage(`./uploads/faces/face_${userName}${id}.jpg`, img));
+  await faceImages.forEach((img, i) => fr.saveImage(`./uploads/faces/face_${userName}${i}.jpg`, img));
   await recognizer.addFaces(faceImages, `${userName}`);
 
   const modelState = recognizer.serialize();
-  fs.readFile(`./models/${userName}.model.json`, 'UTF-8', (err, data) => {  
+  fs.readFile(`./models/neural-net.model.json`, 'UTF-8', (err, data) => {  
     if (err) {
-      fs.writeFileSync(`./models/${userName}.model.json`, JSON.stringify(modelState,  null, 2));
+      fs.writeFileSync(`./models/neural-net.model.json`, JSON.stringify(modelState,  null, 2));
     } else {
-      data = JSON.parse(data);
-      data[0].faceDescriptors.push(modelState[0].faceDescriptors[0]);
-      fs.writeFileSync(`./models/${userName}.model.json`, JSON.stringify(data, null, 2));
+      let readedData = JSON.parse(data);
+      let index = null;
+      // Find className index in neural net
+      readedData.forEach((data, i) => {
+        if (data.className === `${userName}`) {
+          index = i;
+        }
+      });
+      // Add new face in array of face descriptions that className
+      if (index) {
+        modelState[0].faceDescriptors.forEach((data, i ) => {
+          readedData[index].faceDescriptors.push(modelState[0].faceDescriptors[i]);
+        });
+      } else {
+        readedData.push(modelState[0]);
+      }
+      fs.writeFileSync(`./models/neural-net.model.json`, JSON.stringify(readedData, null, 2));
     }
   });
   res.json('Image uploaded with success!');
