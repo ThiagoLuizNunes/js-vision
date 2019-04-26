@@ -5,8 +5,6 @@ const router = express.Router();
 
 const detector = fr.FaceDetector();
 const recognizer = fr.FaceRecognizer();
-// const detector = fr.AsyncFaceDetector()
-// const recognizer = fr.AsyncFaceRecognizer()
 
 router.post('/', async (req, res) => {
   const id = req.body.id;
@@ -22,9 +20,9 @@ router.post('/', async (req, res) => {
   await recognizer.addFaces(faceImages, `${userName}`);
 
   const modelState = recognizer.serialize();
-  fs.readFile(`./models/neural-net.model.json`, 'UTF-8', (err, data) => {  
+  fs.readFile(`./models/neural.model.json`, 'UTF-8', (err, data) => {  
     if (err) {
-      fs.writeFileSync(`./models/neural-net.model.json`, JSON.stringify(modelState,  null, 2));
+      fs.writeFileSync(`./models/neural.model.json`, JSON.stringify(modelState,  null, 2));
     } else {
       let readedData = JSON.parse(data);
       let index = null;
@@ -42,7 +40,7 @@ router.post('/', async (req, res) => {
       } else {
         readedData.push(modelState[0]);
       }
-      fs.writeFileSync(`./models/neural-net.model.json`, JSON.stringify(readedData, null, 2));
+      fs.writeFileSync(`./models/neural.model.json`, JSON.stringify(readedData, null, 2));
     }
   });
   res.json('Image uploaded with success!');

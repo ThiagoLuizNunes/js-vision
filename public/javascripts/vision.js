@@ -59,7 +59,7 @@ disableRecognition.addEventListener('click', () => {
 sendImage.addEventListener('click', () => {
   const dataURL = snapshotCanvas.toDataURL('image/png');
   $.ajax({
-    url: 'http://localhost:3000/upload-image',
+    url: 'http://localhost:3000/face-uploader',
     dataType: 'json',
     data: { id: Math.floor(Math.random() * 20), data: dataURL, name: 'Thiago'},
     type: 'POST',

@@ -4,9 +4,9 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const env = require('./.env');
 
-const indexRouter = require('./routes/index');
-const faceRecRouter = require('./routes/face-recognition');
-const uploadImageRouter = require('./routes/upload-image');
+const indexRoute = require('./routes/index');
+const faceRecRoute = require('./routes/face-recognition');
+const faceUploaderRoute = require('./routes/face-uploader');
 
 const app = express();
 
@@ -24,8 +24,8 @@ app.use(bodyParser.json({limit: '50mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/face-recognition', faceRecRouter);
-app.use('/upload-image', uploadImageRouter);
+app.use('/', indexRoute);
+app.use('/face-recognition', faceRecRoute);
+app.use('/face-uploader', faceUploaderRoute);
 
 module.exports = app;
