@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRoute);
-app.use('/face-recognition', faceRecRoute);
+app.use('/auth', faceRecRoute);
 app.use('/face-uploader', faceUploaderRoute);
 
 module.exports = app;
