@@ -25,15 +25,17 @@ router.post('/', async (req, res) => {
       fs.writeFileSync(`./models/neural.model.json`, JSON.stringify(modelState,  null, 2));
     } else {
       let readedData = JSON.parse(data);
-      let index = null;
+      let index;
+      let isThereUser;
       // Find className index in neural net
       readedData.forEach((data, i) => {
         if (data.className === `${userName}`) {
           index = i;
+          isThereUser = true;
         }
       });
       // Add new face in array of face descriptions that className
-      if (index) {
+      if (isThereUser) {
         modelState[0].faceDescriptors.forEach((data, i ) => {
           readedData[index].faceDescriptors.push(modelState[0].faceDescriptors[i]);
         });
