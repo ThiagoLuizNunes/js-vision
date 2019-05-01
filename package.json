@@ -18,7 +18,8 @@
     "morgan": "~1.9.0",
     "multer": "^1.4.1",
     "multer-storage-cloudinary": "^2.2.1",
-    "opencv4nodejs": "^4.14.1"
+    "opencv4nodejs": "^4.14.1",
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
