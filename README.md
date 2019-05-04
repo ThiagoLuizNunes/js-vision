@@ -1,7 +1,7 @@
 # JS Vision - Face Recognition
 
 ---
-This is my first article that I will be bringing for you guys related to the development of applications based on Node.js, Express and MongoDB. The article consists of building a REST API application, its description and the use good programming practices.
+This project has the objective to implement a RESTful api using Nodejs that functionality is the user authorization through face recognition and login.
 
 Toolkit: Node.js | Express.js | Face-recognition | Opencv4nodejs
 
@@ -11,7 +11,25 @@ Toolkit: Node.js | Express.js | Face-recognition | Opencv4nodejs
 * **[Express.js 4.16.0](http://expressjs.com/)** :white_check_mark:
 * **[Face-recognition 0.9.4](https://github.com/justadudewhohacks/face-recognition.js#readme)** :white_check_mark:
 * **[Opencv4nodejs 4.14.1](https://github.com/justadudewhohacks/opencv4nodejs)** :white_check_mark:
+* **[CMake](https://cmake.org/)** :white_check_mark:
+* **[Libx11](http://www.libpng.org/)** :white_check_mark:
 
+### Installation ###
+
+**Obs.: The following instructions were tested on Ubuntu distribution.**
+
+1. Install Linux dependencies:
+  - sudo apt-get -y install cmake
+  - sudo apt-get install libx11-dev
+  - sudo apt-get install libpng-dev
+
+2. After 'git clone' command, run the following commands to install dependencies:
+  - user@user:~/path_to_cloned_folder/myFolder$ **npm install**
+  - **Manually install the dependencies that may have not been installed by the above command.** :white_check_mark:
+
+3. Start application
+  - use@user:~/path_to_cloned_folder/ **npm run dev**
+  - Access the browser http://localhost:3000
 ## Authors
 
 * Thiago Luiz Pereira Nunes ([ThiagoLuizNunes](https://github.com/ThiagoLuizNunes)) thiagoluiz.dev@gmail.com
