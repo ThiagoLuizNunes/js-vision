@@ -29,8 +29,6 @@ captureButton.addEventListener('click', () => {
   player.style.display = 'none';
   captureButton.style.display = 'none';
   disableRecognition.style.display = 'none';
-  // Stop all video streams.
-  // videoTracks.forEach(function(track) {track.stop()});
 });
 
 clearButton.addEventListener('click', () => {
@@ -43,14 +41,15 @@ clearButton.addEventListener('click', () => {
 
 enableRecognition.addEventListener('click', () => {
   isCamOpen = true;
-  player.removeAttribute('controls');
   navigator.mediaDevices.getUserMedia({video: true})
   .then(handleSuccess);
 });
 
 disableRecognition.addEventListener('click', () => {
   isCamOpen = false;
-  player.style.display = 'none';
+  // player.style.display = 'none';
+  player.removeAttribute('src');
+  player.load();
   captureButton.style.display = 'none';
   disableRecognition.style.display = 'none';
   enableRecognition.style.display = 'block';

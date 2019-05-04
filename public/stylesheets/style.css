@@ -5,11 +5,18 @@ body {
 a {
   color: #00B7FF;
 }
+.vision {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #BDBDBD;
+  padding: 20px;
+}
 .vision-video {
   display: flex;
+  justify-content: center;
 }
 #player {
-  display: none;
+  /* display: none; */
   width: 250px; 
   height: 250px;
 }
