@@ -15,6 +15,11 @@ a {
   display: flex;
   justify-content: center;
 }
+.button-effect {
+  transition: all ease-in-out .2s;
+}
+.button-effect:hover {
+}
 #player {
   /* display: none; */
   width: 250px; 
@@ -27,10 +32,52 @@ a {
 }
 #clear {
   display: none;
+  width: 100px;
+  background-color: #F44336;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  height: 30px;
+}
+#enable {
+  width: 100px;
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  height: 30px;
 }
 #disable {
   display: none;
+  width: 100px;
+  background-color: #F44336;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  height: 30px;
 }
 #capture {
   display: none;
+  width: 100px;
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  height: 30px;
+}
+#send {
+  width: 100px;
+  background-color: #9E9E9E;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  height: 30px;
+}
+#auth {
+  width: 100px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  height: 30px;
 }
