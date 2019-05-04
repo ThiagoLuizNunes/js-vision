@@ -13,15 +13,18 @@
       <video id="player" autoplay></video>
       <canvas id="snapshot"></canvas>
     </div>
-    <div class="vision-panel">
-      <button id="enable">Face Recognize</button>
-      <button id="disable">Cancel</button>
-      <button id="capture">Capture</button>
-      <button id="clear">Clear</button>
-      <button id="send">Send Image</button>
-      <button id="auth">Auth</button>
-      <input id="username" placeholder="username" name="username" type="text"> 
-      <input id="password" placeholder="password" name="password" type="password"> 
+    <div class="vision-panel" style="display: flex;justify-content: space-between;flex-direction: column;">
+      <div style="display: flex;justify-content: center;">
+        <button id="enable">Face Recognize</button>
+        <button id="disable">Cancel</button>
+        <button id="capture">Capture</button>
+        <button id="clear">Clear</button>
+        <button id="send">Send Image</button></div>
+      <div style="display: flex;flex-direction: row;justify-content: center;">
+        <input id="username" placeholder="username" name="username" type="text" style="width: 150px;"> 
+        <input id="password" placeholder="password" name="password" type="password" style="width: 150px;"> 
+        <button id="auth">Login</button>
+      </div>
     </div>
   </div>
 </body>
