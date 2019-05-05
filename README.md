@@ -24,7 +24,7 @@ Toolkit: Node.js | Express.js | Face-recognition | Opencv4nodejs
   - sudo apt-get install libpng-dev
 
 2. After 'git clone' command, run the following commands to install dependencies:
-  - user@user:~/path_to_cloned_folder/myFolder$ **npm install**
+  - user@user:~/path_to_cloned_folder/$ **npm install**
   - **Manually install the dependencies that may have not been installed by the above command.** :white_check_mark:
 
 3. Start application
