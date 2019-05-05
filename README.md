@@ -38,6 +38,6 @@ Toolkit: Node.js | Express.js | Face-recognition | Opencv4nodejs
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
->Created By **[ThiagoLuizNunes](https://www.linkedin.com/in/thiago-luiz-507483112/)** 2017.
+>Created By **[ThiagoLuizNunes](https://www.linkedin.com/in/thiago-luiz-507483112/)** 2019.
 
 ---
