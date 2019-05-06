@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const env = require('./.env');
+// const env = require('./.env');
 
 const indexRoute = require('./routes/index');
 const faceRecRoute = require('./routes/face-recognition');
@@ -10,9 +10,9 @@ const faceUploaderRoute = require('./routes/face-uploader');
 
 const app = express();
 
-process.env.CLOUD_NAME = env.cloud_name;
-process.env.API_KEY = env.api_key;
-process.env.API_SECRET = env.api_secret;
+// process.env.CLOUD_NAME = env.cloud_name;
+// process.env.API_KEY = env.api_key;
+// process.env.API_SECRET = env.api_secret;
 
 app.use(logger('dev'));
 app.use((req, res, next) => {
