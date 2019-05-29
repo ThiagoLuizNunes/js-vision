@@ -84,7 +84,11 @@ authButton.onclick = () => {
       data: { username: username, password: password, data: dataURL },
       type: 'POST',
       success: (data) => {
-        console.log(data);
+        toastr.success(`Message: ${data.message} Accuracy: ${data.accuracy}`);
+      },
+      error: (error) => {
+        const data = error.responseJSON;
+        toastr.error(`Message: ${data.message} Accuracy: ${data.accuracy}`);
       }
     });
   }
