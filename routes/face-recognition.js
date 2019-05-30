@@ -28,12 +28,12 @@ router.post('/', async (req, res) => {
     fs.unlinkSync(`uploads/buffer/${username}.jpg`)
 
     if (distance < 0.5) {
-      res.status(200).json({ accuracy: distance, message: 'User authorized with success' });
+      res.status(200).json({ accuracy: distance, message: 'User authorized' });
     } else {
-      res.status(400).json({ accuracy: distance, message: 'User unauthorized' });
+      res.status(403).json({ accuracy: distance, message: 'User unauthorized' });
     }
   } else {
-    res.status(400).json({ error: 400, message: 'User not found' });
+    res.status(400).json({ message: 'User not found' });
   }
 });
 
